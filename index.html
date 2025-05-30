@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirthankar Adinath Children's Magazine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gujarati-text {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+        }
+        /* Simple loading animation */
+        .loader {
+            border: 5px solid #f3f3f3; /* Light grey */
+            border-top: 5px solid #864EAB; /* Purple */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999; /* Ensure it's on top */
+            display: none; /* Hidden by default */
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 via-pink-100 to-orange-100 min-h-screen text-gray-800">
+    <div class="loader" id="loader"></div>
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+        <div class="text-right mb-6">
+            <button id="lang-en" class="lang-button bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out">English</button>
+            <button id="lang-gu" class="lang-button bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-150 ease-in-out gujarati-text">ગુજરાતી</button>
+        </div>
+
+        <header class="text-center mb-8 md:mb-12">
+            <img src="https://placehold.co/150x150/E9D5FF/864EAB?text=Adinathji&font=Inter" alt="Adinath Bhagwan Illustration" class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full shadow-lg mb-4 border-4 border-white">
+            <h1 id="page-title" class="text-3xl sm:text-4xl md:text-5xl font-bold text-purple-700"></h1>
+        </header>
+
+        <section class="mb-8 md:mb-12 bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg">
+            <p id="intro-text" class="text-base md:text-lg leading-relaxed"></p>
+        </section>
+
+        <section>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                    <div class="p-6">
+                        <img src="https://placehold.co/80x80/C4B5FD/4C1D95?text=EN&font=Inter" alt="English Magazine Icon" class="w-16 h-16 mx-auto mb-4 rounded-lg">
+                        <h2 id="link1-title" class="text-xl font-semibold mb-2 text-purple-600"></h2>
+                        <p id="link1-desc" class="text-gray-600 text-sm mb-4"></p>
+                        <a id="link1-href" href="Tirthankar Adinath Children's Magazine.pdf" target="_blank" class="block w-full text-center bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                            <span id="link-button-text1">Read Now</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                     <div class="p-6">
+                        <img src="https://placehold.co/80x80/FBCFE8/831843?text=HI&font=Inter" alt="Hindi Magazine Icon" class="w-16 h-16 mx-auto mb-4 rounded-lg">
+                        <h2 id="link2-title" class="text-xl font-semibold mb-2 text-pink-600"></h2>
+                        <p id="link2-desc" class="text-gray-600 text-sm mb-4"></p>
+                        <a id="link2-href" href="भगवान आदिनाथ बाल पत्रिका.pdf" target="_blank" class="block w-full text-center bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                            <span id="link-button-text2">Read Now</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                     <div class="p-6">
+                        <img src="https://placehold.co/80x80/FED7AA/9A3412?text=GU&font=Inter" alt="Gujarati Magazine Icon" class="w-16 h-16 mx-auto mb-4 rounded-lg">
+                        <h2 id="link3-title" class="text-xl font-semibold mb-2 text-orange-600"></h2>
+                        <p id="link3-desc" class="text-gray-600 text-sm mb-4"></p>
+                        <a id="link3-href" href="ભગવાન આદિનાથ બાળ પત્રિકા.pdf" target="_blank" class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                           <span id="link-button-text3">Read Now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-300">
+            <p id="footer-text" class="text-gray-600 text-sm"></p>
+        </footer>
+    </div>
+
+    <script>
+        // --- Content Data ---
+        const content = {
+            en: {
+                pageTitle: "Tirthankar Adinath Children's Magazine Hub",
+                introText: "Pranam 🙏 On the auspicious occasion of Akshaya Tritiya, a unique gift for our children! ✨ On the holy day of Bhagwan Shri Adinath's Varshitap Parana, the Shri Adinath Bhagwan Children's Magazine has been published especially for children. This magazine is available in Gujarati, Hindi, and English. <br><br>🏖️ Fun with knowledge during the holidays! 🧒 By reading this beautiful children's magazine, children will: <ul><li>Learn about the inspiring life events of Bhagwan Adinath.</li><li>Easily understand the principles and history of Jainism.</li><li>Enjoy entertaining activities like stories, poems, quizzes, and word searches.</li><li>Spend some time away from TV and mobile to learn something new. 💡</li></ul><br>This magazine covers many interesting topics such as Bhagwan Adinath's life, teachings, the importance of Akshaya Tritiya, fascinating stories, poems, and fun quizzes. <br><br>👨‍👩‍👧‍👦 A special request to parents and 🧑‍🏫 teachers: Please make a special effort to ensure that this invaluable children's magazine reaches every child in our Jain Sangh so they can read it and learn about Prabhu Adinath. Let's together make children's holidays enlightening and joyful! 🎉",
+                link1Title: "Tirthankar Adinath Children's Magazine (English)",
+                link1Desc: "Explore the life and teachings of Tirthankar Adinath in English. This magazine includes stories, poems, quizzes, and more, designed for children aged 10-15.",
+                link2Title: "Bhagwan Adinath Bal Patrika (Hindi)",
+                link2Desc: "Discover the inspiring stories and lessons from Bhagwan Adinath's life in Hindi. A fun and educational magazine for young readers.",
+                link3Title: "Bhagwan Adinath Bal Patrika (Gujarati)",
+                link3Desc: "Learn about Bhagwan Adinath in Gujarati. This children's magazine is filled with engaging content, including life events, teachings, and activities.",
+                linkButtonText: "Read Now",
+                footerText: "Published by Manish V. Shah, Subhanpura, Vadodara. Mobile: 94299 26447 (WhatsApp)"
+            },
+            gu: {
+                pageTitle: "તીર્થંકર આદિનાથ બાળ પત્રિકા હબ",
+                introText: "પ્રણામ 🙏 અક્ષય તૃતીયાના શુભ અવસરે, આપણા બાળકો માટે એક અનોખી ભેટ! ✨ ભગવાન શ્રી આદિનાથના વર્ષીતપ પારણાના પાવન દિવસે, ખાસ બાળકો માટે શ્રી આદિનાથ ભગવાન બાળ પત્રિકા પ્રકાશિત કરવામાં આવી છે. આ પત્રિકા ગુજરાતી, હિન્દી અને અંગ્રેજી એમ ત્રણેય ભાષામાં ઉપલબ્ધ છે. <br><br>🏖️ વેકેશનમાં જ્ઞાન સાથે ગમ્મત! 🧒 આ સુંદર બાળ પત્રિકા વાંચીને બાળકો વેકેશનમાં: <ul><li>ભગવાન આદિનાથના પ્રેરક જીવન પ્રસંગો જાણશે.</li><li>જૈન ધર્મના સિદ્ધાંતો અને ઇતિહાસ સરળતાથી સમજશે.</li><li>વાર્તા, કવિતા, પ્રશ્નોત્તરી, શબ્દ શોધ જેવી મનોરંજક પ્રવૃત્તિઓ માણશે.</li><li>થોડો સમય ટીવી અને મોબાઈલથી દૂર રહીને કંઈક નવું શીખશે. 💡</li></ul><br>આ પત્રિકામાં ભગવાન આદિનાથના જીવન, શિક્ષાઓ, અક્ષય તૃતીયાનું મહત્વ, રોચક વાર્તાઓ, કવિતાઓ અને મજેદાર પ્રશ્નોત્તરી જેવી ઘણી બધી જાણવા જેવી બાબતો આવરી લેવાઈ છે. <br><br>👨‍👩‍👧‍👦 માતા-પિતા અને 🧑‍🏫 શિક્ષકોને ખાસ વિનંતી: આ અમૂલ્ય બાળ પત્રિકા આપણા જૈન સંઘના દરેક બાળક સુધી પહોંચે અને તેઓ તેને વાંચીને પ્રભુ આદિનાથ વિશે જાણે તે માટે ખાસ પ્રયત્ન કરશોજી. ચાલો, સાથે મળીને બાળકોના વેકેશનને જ્ઞાનવર્ધક અને આનંદમય બનાવીએ! 🎉",
+                link1Title: "તીર્થંકર આદિનાથ બાળ પત્રિકા (અંગ્રેજી)",
+                link1Desc: "તીર્થંકર આદિનાથના જીવન અને ઉપદેશો અંગ્રેજીમાં અન્વેષણ કરો. આ પત્રિકામાં ૧૦-૧૫ વર્ષના બાળકો માટે વાર્તાઓ, કવિતાઓ, ક્વિઝ અને વધુ શામેલ છે.",
+                link2Title: "ભગવાન આદિનાથ બાળ પત્રિકા (હિન્દી)",
+                link2Desc: "ભગવાન આદિનાથના જીવનમાંથી પ્રેરણાદાયક વાર્તાઓ અને પાઠ હિન્દીમાં શોધો. યુવાન વાચકો માટે એક મનોરંજક અને શૈક્ષણિક પત્રિકા.",
+                link3Title: "ભગવાન આદિનાથ બાળ પત્રિકા (ગુજરાતી)",
+                link3Desc: "ભગવાન આદિનાથ વિશે ગુજરાતીમાં જાણો. આ બાળ પત્રિકા જીવન પ્રસંગો, ઉપદેશો અને પ્રવૃત્તિઓ સહિત રસપ્રદ સામગ્રીથી ભરેલી છે.",
+                linkButtonText: "હમણાં વાંચો",
+                footerText: "મનીષ વી. શાહ, સુભાનપુરા, વડોદરા દ્વારા પ્રકાશિત. મોબાઇલ: ૯૪૨૯૯ ૨૬૪૪૭ (વોટ્સએપ)"
+            }
+        };
+
+        // --- DOM Elements ---
+        const pageTitleEl = document.getElementById('page-title');
+        const introTextEl = document.getElementById('intro-text');
+        const link1TitleEl = document.getElementById('link1-title');
+        const link1DescEl = document.getElementById('link1-desc');
+        const link2TitleEl = document.getElementById('link2-title');
+        const link2DescEl = document.getElementById('link2-desc');
+        const link3TitleEl = document.getElementById('link3-title');
+        const link3DescEl = document.getElementById('link3-desc');
+        const linkButtonText1El = document.getElementById('link-button-text1');
+        const linkButtonText2El = document.getElementById('link-button-text2');
+        const linkButtonText3El = document.getElementById('link-button-text3');
+        const footerTextEl = document.getElementById('footer-text');
+        const loaderEl = document.getElementById('loader');
+
+        const bodyEl = document.body;
+        const allTextElements = [pageTitleEl, introTextEl, link1TitleEl, link1DescEl, link2TitleEl, link2DescEl, link3TitleEl, link3DescEl, footerTextEl, linkButtonText1El, linkButtonText2El, linkButtonText3El];
+
+
+        // --- Language Switching Function ---
+        function switchLanguage(lang) {
+            // Show loader
+            loaderEl.style.display = 'block';
+            
+            // Simulate a small delay for language loading, then update content
+            setTimeout(() => {
+                if (lang === 'gu') {
+                    bodyEl.classList.add('gujarati-text');
+                    allTextElements.forEach(el => el && el.classList.add('gujarati-text'));
+                } else {
+                    bodyEl.classList.remove('gujarati-text');
+                    allTextElements.forEach(el => el && el.classList.remove('gujarati-text'));
+                }
+
+                pageTitleEl.innerHTML = content[lang].pageTitle;
+                introTextEl.innerHTML = content[lang].introText;
+                link1TitleEl.innerHTML = content[lang].link1Title;
+                link1DescEl.innerHTML = content[lang].link1Desc;
+                link2TitleEl.innerHTML = content[lang].link2Title;
+                link2DescEl.innerHTML = content[lang].link2Desc;
+                link3TitleEl.innerHTML = content[lang].link3Title;
+                link3DescEl.innerHTML = content[lang].link3Desc;
+                linkButtonText1El.innerHTML = content[lang].linkButtonText;
+                linkButtonText2El.innerHTML = content[lang].linkButtonText;
+                linkButtonText3El.innerHTML = content[lang].linkButtonText;
+                footerTextEl.innerHTML = content[lang].footerText;
+
+                // Update active button style
+                document.querySelectorAll('.lang-button').forEach(button => {
+                    button.classList.remove('ring-2', 'ring-offset-2', 'ring-yellow-400');
+                    if (button.id === `lang-${lang}`) {
+                        button.classList.add('ring-2', 'ring-offset-2', 'ring-yellow-400');
+                    }
+                });
+                
+                // Store preference
+                localStorage.setItem('preferredLang', lang);
+
+                // Hide loader
+                loaderEl.style.display = 'none';
+            }, 300); // 300ms delay
+        }
+
+        // --- Event Listeners for Language Buttons ---
+        document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+        document.getElementById('lang-gu').addEventListener('click', () => switchLanguage('gu'));
+
+        // --- Initial Load ---
+        // Check for stored language preference or default to English
+        const preferredLang = localStorage.getItem('preferredLang') || 'en';
+        switchLanguage(preferredLang);
+
+    </script>
+</body>
+</html>
